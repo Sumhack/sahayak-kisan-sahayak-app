@@ -28,8 +28,8 @@ const Index = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background flex flex-col">
-      <div className="flex-1 overflow-auto">
+    <div className="min-h-screen bg-background">
+      <div className="w-full">
         {renderActiveScreen()}
       </div>
       <BottomNavigation 

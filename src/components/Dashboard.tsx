@@ -81,7 +81,6 @@ const Dashboard = () => {
 
   const handleVoiceInput = () => {
     setIsListening(!isListening);
-    // Voice input logic would go here
     setTimeout(() => setIsListening(false), 3000);
   };
 
@@ -116,31 +115,36 @@ const Dashboard = () => {
   };
 
   return (
-    <div className="flex-1 bg-gradient-to-br from-green-50 to-orange-50 pb-20">
-      <div className="p-4 space-y-6">
-        {/* Header */}
-        <div className="flex items-center justify-between">
-          <div>
-            <h1 className="text-2xl font-bold text-green-800">
-              🌾 Sahayak
-            </h1>
-            <p className="text-green-600 text-sm">
-              {greetingMessage()}, Farmer! • {formatTime(currentTime)}
-            </p>
-          </div>
-          <div className="flex items-center space-x-2">
-            <Button size="sm" variant="outline" className="border-green-300">
-              <Bell className="h-4 w-4 mr-1" />
-              <Badge variant="destructive" className="ml-1 h-4 w-4 p-0 text-xs">
-                {alerts.length}
-              </Badge>
-            </Button>
-            <Button size="sm" variant="outline" className="border-green-300">
-              <Volume2 className="h-4 w-4" />
-            </Button>
+    <div className="min-h-screen bg-gradient-to-br from-green-50 to-orange-50">
+      {/* App Header */}
+      <div className="bg-white shadow-sm border-b">
+        <div className="px-4 py-4">
+          <div className="flex items-center justify-between">
+            <div>
+              <h1 className="text-xl font-bold text-green-800">
+                🌾 Sahayak
+              </h1>
+              <p className="text-green-600 text-sm">
+                {greetingMessage()}, Farmer! • {formatTime(currentTime)}
+              </p>
+            </div>
+            <div className="flex items-center space-x-2">
+              <Button size="sm" variant="outline" className="border-green-300">
+                <Bell className="h-4 w-4 mr-1" />
+                <Badge variant="destructive" className="ml-1 h-4 w-4 p-0 text-xs">
+                  {alerts.length}
+                </Badge>
+              </Button>
+              <Button size="sm" variant="outline" className="border-green-300">
+                <Volume2 className="h-4 w-4" />
+              </Button>
+            </div>
           </div>
         </div>
+      </div>
 
+      {/* Content */}
+      <div className="p-4 space-y-6 pb-24">
         {/* Voice Input */}
         <Card className="bg-gradient-to-r from-green-100 to-green-50 border-green-200">
           <CardContent className="p-4">
@@ -169,7 +173,7 @@ const Dashboard = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <Card className="bg-sky-gradient text-white">
             <CardHeader className="pb-3">
-              <CardTitle className="text-lg flex items-center">
+              <CardTitle className="text-lg flex items-center text-white">
                 <Sun className="h-5 w-5 mr-2" />
                 Today's Weather
               </CardTitle>
@@ -177,12 +181,12 @@ const Dashboard = () => {
             <CardContent>
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-2xl font-bold">{weather.temperature}°C</p>
-                  <p className="text-sm opacity-90">{weather.condition}</p>
+                  <p className="text-2xl font-bold text-white">{weather.temperature}°C</p>
+                  <p className="text-sm opacity-90 text-white">{weather.condition}</p>
                 </div>
                 <div className="text-right">
                   <p className="text-4xl">{weather.icon}</p>
-                  <div className="flex items-center text-sm mt-1">
+                  <div className="flex items-center text-sm mt-1 text-white">
                     <Droplets className="h-4 w-4 mr-1" />
                     {weather.humidity}%
                   </div>
@@ -193,22 +197,22 @@ const Dashboard = () => {
 
           <Card className="bg-saffron-gradient text-white">
             <CardHeader className="pb-3">
-              <CardTitle className="text-lg flex items-center">
+              <CardTitle className="text-lg flex items-center text-white">
                 <TrendingUp className="h-5 w-5 mr-2" />
                 Market Snapshot
               </CardTitle>
             </CardHeader>
             <CardContent>
               <div className="space-y-2">
-                <div className="flex justify-between">
+                <div className="flex justify-between text-white">
                   <span>Tomato</span>
                   <span className="font-mono">₹25/kg ↑</span>
                 </div>
-                <div className="flex justify-between">
+                <div className="flex justify-between text-white">
                   <span>Brinjal</span>
                   <span className="font-mono">₹18/kg ↓</span>
                 </div>
-                <div className="flex justify-between">
+                <div className="flex justify-between text-white">
                   <span>Chili</span>
                   <span className="font-mono">₹45/kg ↑</span>
                 </div>
@@ -217,7 +221,7 @@ const Dashboard = () => {
           </Card>
         </div>
 
-        {/* Sahayak Says (Proactive Tips) */}
+        {/* Sahayak Says */}
         <Card className="border-l-4 border-l-green-500 bg-green-50">
           <CardContent className="p-4">
             <div className="flex items-start space-x-3">
@@ -248,7 +252,7 @@ const Dashboard = () => {
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+            <div className="grid grid-cols-1 gap-3">
               {crops.map((crop, index) => (
                 <div key={index} className="p-3 bg-gray-50 rounded-lg border">
                   <div className="flex items-center justify-between mb-2">
@@ -300,7 +304,7 @@ const Dashboard = () => {
         </Card>
 
         {/* Quick Actions */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <div className="grid grid-cols-2 gap-4">
           <Button className="h-20 bg-green-600 hover:bg-green-700 flex-col space-y-2 text-white">
             <Camera className="h-6 w-6" />
             <span className="text-sm">Disease Check</span>
