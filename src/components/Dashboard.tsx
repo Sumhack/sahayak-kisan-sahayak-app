@@ -116,206 +116,208 @@ const Dashboard = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-green-50 to-orange-50 p-4">
-      {/* Header */}
-      <div className="flex items-center justify-between mb-6">
-        <div>
-          <h1 className="text-2xl font-bold text-green-800">
-            🌾 Sahayak
-          </h1>
-          <p className="text-green-600 text-sm">
-            {greetingMessage()}, Farmer! • {formatTime(currentTime)}
-          </p>
-        </div>
-        <div className="flex items-center space-x-2">
-          <Button size="sm" variant="outline" className="border-green-300">
-            <Bell className="h-4 w-4 mr-1" />
-            <Badge variant="destructive" className="ml-1 h-4 w-4 p-0 text-xs">
-              {alerts.length}
-            </Badge>
-          </Button>
-          <Button size="sm" variant="outline" className="border-green-300">
-            <Volume2 className="h-4 w-4" />
-          </Button>
-        </div>
-      </div>
-
-      {/* Voice Input */}
-      <Card className="mb-6 bg-gradient-to-r from-green-100 to-green-50 border-green-200">
-        <CardContent className="p-4">
-          <div className="flex items-center space-x-4">
-            <Button 
-              onClick={handleVoiceInput}
-              className={`h-16 w-16 rounded-full bg-earth-gradient text-white hover:shadow-lg transition-all duration-200 ${
-                isListening ? 'animate-gentle-pulse' : ''
-              }`}
-            >
-              <Mic className={`h-8 w-8 ${isListening ? 'animate-voice-wave' : ''}`} />
+    <div className="flex-1 bg-gradient-to-br from-green-50 to-orange-50 pb-20">
+      <div className="p-4 space-y-6">
+        {/* Header */}
+        <div className="flex items-center justify-between">
+          <div>
+            <h1 className="text-2xl font-bold text-green-800">
+              🌾 Sahayak
+            </h1>
+            <p className="text-green-600 text-sm">
+              {greetingMessage()}, Farmer! • {formatTime(currentTime)}
+            </p>
+          </div>
+          <div className="flex items-center space-x-2">
+            <Button size="sm" variant="outline" className="border-green-300">
+              <Bell className="h-4 w-4 mr-1" />
+              <Badge variant="destructive" className="ml-1 h-4 w-4 p-0 text-xs">
+                {alerts.length}
+              </Badge>
             </Button>
-            <div className="flex-1">
-              <p className="text-green-800 font-medium mb-1">
-                {isListening ? 'Listening...' : 'Ask Sahayak Anything'}
-              </p>
-              <p className="text-green-600 text-sm">
-                {isListening ? 'Speak now about your crops, diseases, or market prices' : 'Tap the mic to speak in Kannada or English'}
-              </p>
-            </div>
+            <Button size="sm" variant="outline" className="border-green-300">
+              <Volume2 className="h-4 w-4" />
+            </Button>
           </div>
-        </CardContent>
-      </Card>
+        </div>
 
-      {/* Weather & Quick Stats */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-        <Card className="bg-sky-gradient text-white">
-          <CardHeader className="pb-3">
-            <CardTitle className="text-lg flex items-center">
-              <Sun className="h-5 w-5 mr-2" />
-              Today's Weather
-            </CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="flex items-center justify-between">
-              <div>
-                <p className="text-2xl font-bold">{weather.temperature}°C</p>
-                <p className="text-sm opacity-90">{weather.condition}</p>
-              </div>
-              <div className="text-right">
-                <p className="text-4xl">{weather.icon}</p>
-                <div className="flex items-center text-sm mt-1">
-                  <Droplets className="h-4 w-4 mr-1" />
-                  {weather.humidity}%
-                </div>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
-
-        <Card className="bg-saffron-gradient text-white">
-          <CardHeader className="pb-3">
-            <CardTitle className="text-lg flex items-center">
-              <TrendingUp className="h-5 w-5 mr-2" />
-              Market Snapshot
-            </CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="space-y-2">
-              <div className="flex justify-between">
-                <span>Tomato</span>
-                <span className="font-mono">₹25/kg ↑</span>
-              </div>
-              <div className="flex justify-between">
-                <span>Brinjal</span>
-                <span className="font-mono">₹18/kg ↓</span>
-              </div>
-              <div className="flex justify-between">
-                <span>Chili</span>
-                <span className="font-mono">₹45/kg ↑</span>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
-      </div>
-
-      {/* Sahayak Says (Proactive Tips) */}
-      <Card className="mb-6 border-l-4 border-l-green-500 bg-green-50">
-        <CardContent className="p-4">
-          <div className="flex items-start space-x-3">
-            <div className="bg-green-100 rounded-full p-2">
-              <Sprout className="h-5 w-5 text-green-600 animate-leaf-sway" />
-            </div>
-            <div className="flex-1">
-              <h3 className="font-semibold text-green-800 mb-1">Sahayak Says:</h3>
-              <p className="text-green-700 text-sm">
-                Your brinjal crop is looking excellent! Consider harvesting in 2-3 days when prices are expected to rise. 
-                The weather is perfect for the next few days.
-              </p>
-              <Button variant="link" className="text-green-600 p-0 h-auto font-normal text-sm mt-2">
-                <Volume2 className="h-4 w-4 mr-1" />
-                Listen to tip
+        {/* Voice Input */}
+        <Card className="bg-gradient-to-r from-green-100 to-green-50 border-green-200">
+          <CardContent className="p-4">
+            <div className="flex items-center space-x-4">
+              <Button 
+                onClick={handleVoiceInput}
+                className={`h-16 w-16 rounded-full bg-earth-gradient text-white hover:shadow-lg transition-all duration-200 ${
+                  isListening ? 'animate-gentle-pulse' : ''
+                }`}
+              >
+                <Mic className={`h-8 w-8 ${isListening ? 'animate-voice-wave' : ''}`} />
               </Button>
+              <div className="flex-1">
+                <p className="text-green-800 font-medium mb-1">
+                  {isListening ? 'Listening...' : 'Ask Sahayak Anything'}
+                </p>
+                <p className="text-green-600 text-sm">
+                  {isListening ? 'Speak now about your crops, diseases, or market prices' : 'Tap the mic to speak in Kannada or English'}
+                </p>
+              </div>
             </div>
-          </div>
-        </CardContent>
-      </Card>
+          </CardContent>
+        </Card>
 
-      {/* My Crops */}
-      <Card className="mb-6">
-        <CardHeader>
-          <CardTitle className="text-green-800 flex items-center">
-            <Sprout className="h-5 w-5 mr-2" />
-            My Crops
-          </CardTitle>
-        </CardHeader>
-        <CardContent>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
-            {crops.map((crop, index) => (
-              <div key={index} className="p-3 bg-gray-50 rounded-lg border">
-                <div className="flex items-center justify-between mb-2">
-                  <div className="flex items-center space-x-2">
-                    <span className="text-2xl">{crop.icon}</span>
-                    <span className="font-medium">{crop.name}</span>
-                  </div>
-                  <Badge variant="outline" className="text-xs">
-                    {crop.stage}
-                  </Badge>
+        {/* Weather & Quick Stats */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <Card className="bg-sky-gradient text-white">
+            <CardHeader className="pb-3">
+              <CardTitle className="text-lg flex items-center">
+                <Sun className="h-5 w-5 mr-2" />
+                Today's Weather
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="flex items-center justify-between">
+                <div>
+                  <p className="text-2xl font-bold">{weather.temperature}°C</p>
+                  <p className="text-sm opacity-90">{weather.condition}</p>
                 </div>
-                <div className="flex items-center justify-between text-sm">
-                  <span className="text-gray-600">Health:</span>
-                  <span className={`font-semibold ${getHealthColor(crop.health)}`}>
-                    {crop.health}%
-                  </span>
+                <div className="text-right">
+                  <p className="text-4xl">{weather.icon}</p>
+                  <div className="flex items-center text-sm mt-1">
+                    <Droplets className="h-4 w-4 mr-1" />
+                    {weather.humidity}%
+                  </div>
                 </div>
               </div>
-            ))}
-          </div>
-        </CardContent>
-      </Card>
+            </CardContent>
+          </Card>
 
-      {/* Alerts */}
-      <Card className="mb-6">
-        <CardHeader>
-          <CardTitle className="text-green-800 flex items-center">
-            <AlertTriangle className="h-5 w-5 mr-2" />
-            Alerts & Updates
-          </CardTitle>
-        </CardHeader>
-        <CardContent>
-          <div className="space-y-3">
-            {alerts.map((alert) => (
-              <div key={alert.id} className={`p-3 rounded-lg border ${getAlertColor(alert.type)}`}>
-                <div className="flex items-start justify-between">
-                  <div className="flex-1">
-                    <p className="font-medium text-sm">{alert.message}</p>
-                    <p className="text-xs mt-1 opacity-70">{alert.crop} • {alert.timestamp}</p>
-                  </div>
-                  <Button variant="ghost" size="sm" className="ml-2">
-                    <Volume2 className="h-4 w-4" />
-                  </Button>
+          <Card className="bg-saffron-gradient text-white">
+            <CardHeader className="pb-3">
+              <CardTitle className="text-lg flex items-center">
+                <TrendingUp className="h-5 w-5 mr-2" />
+                Market Snapshot
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="space-y-2">
+                <div className="flex justify-between">
+                  <span>Tomato</span>
+                  <span className="font-mono">₹25/kg ↑</span>
+                </div>
+                <div className="flex justify-between">
+                  <span>Brinjal</span>
+                  <span className="font-mono">₹18/kg ↓</span>
+                </div>
+                <div className="flex justify-between">
+                  <span>Chili</span>
+                  <span className="font-mono">₹45/kg ↑</span>
                 </div>
               </div>
-            ))}
-          </div>
-        </CardContent>
-      </Card>
+            </CardContent>
+          </Card>
+        </div>
 
-      {/* Quick Actions */}
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
-        <Button className="h-20 bg-green-600 hover:bg-green-700 flex-col space-y-2">
-          <Camera className="h-6 w-6" />
-          <span className="text-sm">Disease Check</span>
-        </Button>
-        <Button className="h-20 bg-orange-600 hover:bg-orange-700 flex-col space-y-2">
-          <IndianRupee className="h-6 w-6" />
-          <span className="text-sm">Market Prices</span>
-        </Button>
-        <Button className="h-20 bg-blue-600 hover:bg-blue-700 flex-col space-y-2">
-          <Shield className="h-6 w-6" />
-          <span className="text-sm">Schemes</span>
-        </Button>
-        <Button className="h-20 bg-purple-600 hover:bg-purple-700 flex-col space-y-2">
-          <Sprout className="h-6 w-6" />
-          <span className="text-sm">Add Crop</span>
-        </Button>
+        {/* Sahayak Says (Proactive Tips) */}
+        <Card className="border-l-4 border-l-green-500 bg-green-50">
+          <CardContent className="p-4">
+            <div className="flex items-start space-x-3">
+              <div className="bg-green-100 rounded-full p-2">
+                <Sprout className="h-5 w-5 text-green-600 animate-leaf-sway" />
+              </div>
+              <div className="flex-1">
+                <h3 className="font-semibold text-green-800 mb-1">Sahayak Says:</h3>
+                <p className="text-green-700 text-sm">
+                  Your brinjal crop is looking excellent! Consider harvesting in 2-3 days when prices are expected to rise. 
+                  The weather is perfect for the next few days.
+                </p>
+                <Button variant="link" className="text-green-600 p-0 h-auto font-normal text-sm mt-2">
+                  <Volume2 className="h-4 w-4 mr-1" />
+                  Listen to tip
+                </Button>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* My Crops */}
+        <Card>
+          <CardHeader>
+            <CardTitle className="text-green-800 flex items-center">
+              <Sprout className="h-5 w-5 mr-2" />
+              My Crops
+            </CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+              {crops.map((crop, index) => (
+                <div key={index} className="p-3 bg-gray-50 rounded-lg border">
+                  <div className="flex items-center justify-between mb-2">
+                    <div className="flex items-center space-x-2">
+                      <span className="text-2xl">{crop.icon}</span>
+                      <span className="font-medium">{crop.name}</span>
+                    </div>
+                    <Badge variant="outline" className="text-xs">
+                      {crop.stage}
+                    </Badge>
+                  </div>
+                  <div className="flex items-center justify-between text-sm">
+                    <span className="text-gray-600">Health:</span>
+                    <span className={`font-semibold ${getHealthColor(crop.health)}`}>
+                      {crop.health}%
+                    </span>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* Alerts */}
+        <Card>
+          <CardHeader>
+            <CardTitle className="text-green-800 flex items-center">
+              <AlertTriangle className="h-5 w-5 mr-2" />
+              Alerts & Updates
+            </CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="space-y-3">
+              {alerts.map((alert) => (
+                <div key={alert.id} className={`p-3 rounded-lg border ${getAlertColor(alert.type)}`}>
+                  <div className="flex items-start justify-between">
+                    <div className="flex-1">
+                      <p className="font-medium text-sm">{alert.message}</p>
+                      <p className="text-xs mt-1 opacity-70">{alert.crop} • {alert.timestamp}</p>
+                    </div>
+                    <Button variant="ghost" size="sm" className="ml-2">
+                      <Volume2 className="h-4 w-4" />
+                    </Button>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* Quick Actions */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+          <Button className="h-20 bg-green-600 hover:bg-green-700 flex-col space-y-2 text-white">
+            <Camera className="h-6 w-6" />
+            <span className="text-sm">Disease Check</span>
+          </Button>
+          <Button className="h-20 bg-orange-600 hover:bg-orange-700 flex-col space-y-2 text-white">
+            <IndianRupee className="h-6 w-6" />
+            <span className="text-sm">Market Prices</span>
+          </Button>
+          <Button className="h-20 bg-blue-600 hover:bg-blue-700 flex-col space-y-2 text-white">
+            <Shield className="h-6 w-6" />
+            <span className="text-sm">Schemes</span>
+          </Button>
+          <Button className="h-20 bg-purple-600 hover:bg-purple-700 flex-col space-y-2 text-white">
+            <Sprout className="h-6 w-6" />
+            <span className="text-sm">Add Crop</span>
+          </Button>
+        </div>
       </div>
     </div>
   );

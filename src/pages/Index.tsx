@@ -28,8 +28,10 @@ const Index = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background">
-      {renderActiveScreen()}
+    <div className="min-h-screen bg-background flex flex-col">
+      <div className="flex-1 overflow-auto">
+        {renderActiveScreen()}
+      </div>
       <BottomNavigation 
         activeItem={activeScreen} 
         onItemClick={setActiveScreen} 
